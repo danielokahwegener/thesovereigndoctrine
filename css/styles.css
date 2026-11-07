@@ -1122,6 +1122,8 @@ img { max-width: 100%; display: block; }
   color: var(--color-text-muted);
 }
 
+.faq-answer-body a { color: var(--color-primary); text-decoration: underline; }
+
 /* =========================================================
    FINAL CTA — visually distinct closing band
    ========================================================= */
