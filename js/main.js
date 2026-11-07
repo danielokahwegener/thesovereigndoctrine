@@ -140,11 +140,29 @@
   const menu = document.getElementById("videoQualityMenu");
   if (!video || !wrapper || !btn || !menu) return;
 
-  const qualitySources = {
-    "1080p": "assets/vsl-1080p.mp4",
-    "720p": "assets/vsl-720p.mp4",
-    "480p": "assets/vsl-480p.mp4",
-  };
+  // AV1 files are smaller but older iPhones and some browsers cannot play
+  // them. Those devices get H.264 files instead (720p and 480p only).
+  const AV1 = 'video/mp4; codecs="av01.0.08M.08, mp4a.40.2"';
+  const H264 = 'video/mp4; codecs="avc1.64001f, mp4a.40.2"';
+  const canAV1 = video.canPlayType('video/mp4; codecs="av01.0.08M.08"') !== "";
+  const qualitySources = canAV1
+    ? {
+        "1080p": { src: "assets/vsl-1080p.mp4", type: AV1 },
+        "720p": { src: "assets/vsl-720p.mp4", type: AV1 },
+        "480p": { src: "assets/vsl-480p.mp4", type: AV1 },
+      }
+    : {
+        "720p": { src: "assets/vsl-720p-h264.mp4", type: H264 },
+        "480p": { src: "assets/vsl-480p-h264.mp4", type: H264 },
+      };
+
+  if (!canAV1) {
+    const opt1080 = menu.querySelector('[data-quality="1080p"]');
+    if (opt1080) opt1080.remove();
+    menu.querySelectorAll(".video-quality-option").forEach((o) =>
+      o.classList.toggle("is-active", o.dataset.quality === "720p")
+    );
+  }
 
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -161,8 +179,8 @@
     option.addEventListener("click", (e) => {
       e.stopPropagation();
       const quality = option.dataset.quality;
-      const src = qualitySources[quality];
-      if (!src) return;
+      const choice = qualitySources[quality];
+      if (!choice) return;
 
       const resumeTime = video.currentTime;
       const wasPlaying = !video.paused;
@@ -174,7 +192,11 @@
       };
       video.addEventListener("loadedmetadata", onLoaded);
 
-      video.querySelector("source").src = src;
+      video.querySelectorAll("source").forEach((el) => el.remove());
+      const srcEl = document.createElement("source");
+      srcEl.src = choice.src;
+      srcEl.type = choice.type;
+      video.appendChild(srcEl);
       video.load();
 
       menu.querySelectorAll(".video-quality-option").forEach((o) => o.classList.remove("is-active"));

@@ -28,7 +28,7 @@
      it's here only so the page isn't indexed while slots are unfilled. -->
 <meta name="robots" content="noindex" />
 
-<link rel="stylesheet" href="css/styles.css?v=23" />
+<link rel="stylesheet" href="css/styles.css?v=25" />
 </head>
 <body>
 
@@ -53,7 +53,8 @@
           playsinline
           aria-label="Program overview video"
         >
-          <source src="assets/vsl-1080p.mp4" type="video/mp4">
+          <source src="assets/vsl-1080p.mp4" type='video/mp4; codecs="av01.0.08M.08, mp4a.40.2"'>
+          <source src="assets/vsl-720p-h264.mp4" type='video/mp4; codecs="avc1.64001f, mp4a.40.2"'>
         </video>
         <button type="button" class="video-center-play" id="videoPlayPauseBtn" aria-label="Pause video">
           <svg class="icon-pause" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
@@ -1485,9 +1486,8 @@
 <!-- ================= FAQ =================
      All 19 questions from faq-ordered.md, ordered by blocking power —
      top items carry most of the weight, since a reader stops reading
-     once their own question is answered. Three placeholders still
-     need real input: [Age] and the online/in-person + email answers,
-     all bracketed below. -->
+     once their own question is answered. Still to fill in: the support
+     email (waitlist answer) and a fuller online/in-person answer. -->
 
 <section id="faq" class="section faq reveal" aria-labelledby="faq-heading">
   <div class="container prose">
@@ -1665,8 +1665,8 @@
   <div class="container footer-inner">
     <p class="footer-copy">© 2026 The Sovereign Doctrine. All rights reserved.</p>
     <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
     </div>
   </div>
 </footer>
@@ -1677,7 +1677,7 @@
   <a href="#apply" class="btn btn-primary" data-cta-location="sticky">Find My Score</a>
 </div>
 
-<script src="js/main.js?v=11" defer></script>
+<script src="js/main.js?v=12" defer></script>
 <script src="js/results.js?v=1" defer></script>
 </body>
 </html>
