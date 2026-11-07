@@ -1,0 +1,9 @@
+# Keep private or unused files out of the public repo
+.DS_Store
+assets/Results/
+assets/vsl.mp4
+scorecard.html
+js/scorecard.js
+css/scorecard.css
+*.md
+*.txt
