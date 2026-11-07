@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="vbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c2c33"/>
+      <stop offset="55%" stop-color="#1c1c20"/>
+      <stop offset="100%" stop-color="#101012"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#vbg)"/>
+  <circle cx="640" cy="316" r="52" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+  <path d="M624 296 L668 316 L624 336 Z" fill="#ffffff"/>
+  <text x="640" y="420" text-anchor="middle" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="rgba(255,255,255,0.55)" letter-spacing="1">16:9 VIDEO PLACEHOLDER</text>
+  <text x="640" y="452" text-anchor="middle" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.32)">Add the VSL video source in index.html to enable autoplay</text>
+</svg>
