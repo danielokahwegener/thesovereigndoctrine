@@ -7,8 +7,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // ---------- video: play only while visible ----------
-  const video = document.getElementById("resultsVideo");
-  if (video) {
+  section.querySelectorAll(".results-phone video").forEach((video) => {
     let played = false;
     const showControls = () => video.setAttribute("controls", "");
 
@@ -22,7 +21,7 @@
               video.play().then(() => {
                 if (!played) {
                   played = true;
-                  if (typeof track === "function") track("results_video_play");
+                  if (typeof track === "function") track("results_video_play", { video: video.id || "results" });
                 }
               }).catch(showControls);
             } else {
@@ -33,7 +32,7 @@
         { threshold: 0.4 }
       ).observe(video);
     }
-  }
+  });
 
   // ---------- screenshot viewer ----------
   const shots = [];

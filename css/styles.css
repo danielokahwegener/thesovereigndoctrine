@@ -1606,6 +1606,10 @@ img { max-width: 100%; display: block; }
 }
 .results-feature-copy p:last-child { margin-bottom: 0; }
 
+/* Mirrored variant: copy on the left, phone on the right (stacks phone first on mobile). */
+.results-feature--reverse { grid-template-columns: minmax(0, 1fr) auto; }
+.results-feature--reverse .results-phone { order: 2; }
+
 .results-row-block { margin: 0 auto var(--space-7); }
 .results-row-title {
   text-align: center;
@@ -1666,6 +1670,7 @@ body.lightbox-open .marquee-track { animation-play-state: paused; }
 
 @media (max-width: 760px) {
   .results-feature { grid-template-columns: 1fr; justify-items: center; gap: var(--space-5); text-align: center; }
+  .results-feature--reverse .results-phone { order: 0; }
   .results-phone { width: min(250px, 66vw); }
   .marquee { --shot-w: 150px; }
   .marquee-set { gap: 12px; padding-right: 12px; }
